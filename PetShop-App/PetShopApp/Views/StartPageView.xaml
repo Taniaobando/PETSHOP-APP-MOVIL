@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PetShopApp.Views.StartPageView"
+             Title="Nombre App"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="BoxView" x:Key="LineUp">
+                <Setter Property="HeightRequest" Value="3"></Setter>
+                <Setter Property="BackgroundColor" Value="Black"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="0">
+
+            <Label Text="Bienvenido"
+                   TextColor="Black"
+                   Margin="0"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   Padding="15,23"
+                   FontSize="Title"/>
+            <BoxView Style="{StaticResource LineUp}" Margin="0"></BoxView>
+            <Label Text="Por favor seleccione alguna opción"
+                   VerticalOptions="StartAndExpand"
+                   TextColor="Black"
+                   Padding="0,15,0,0"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="Body"/>
+            <Image  Source="ShopSelector.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding ShopImageTappedCommand}"
+                        NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="ClinicSelector.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding VetImageTappedCommand}"
+                        NumberOfTapsRequired="1" /> 
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

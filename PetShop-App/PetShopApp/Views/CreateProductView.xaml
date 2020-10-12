@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="PetShopApp.Views.CreateProductView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--Estilos de la pagina-->
+            <Style TargetType="Label" x:Key="Title">
+                <Setter Property="HorizontalOptions" Value="Center"></Setter>
+                <Setter Property="TextColor" Value="Black"></Setter>
+                <Setter Property="FontSize" Value="20"></Setter>
+                <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+                <Setter Property="Margin" Value="0,08"></Setter>
+                <Setter Property="Padding" Value="90,0"></Setter>
+            </Style>
+            <Style TargetType="Label" x:Key="FormLabel">
+                <Setter Property="Margin" Value="10,40,10,10"></Setter>
+                <Setter Property="FontSize" Value="Medium"></Setter>
+                <Setter Property="TextColor" Value="Black"></Setter>
+            </Style>
+            <Style TargetType="BoxView" x:Key="LineUp">
+                <Setter Property="HeightRequest" Value="3"></Setter>
+                <Setter Property="BackgroundColor" Value="Black"></Setter>
+            </Style>
+            <Style TargetType="Button" x:Key="ButtonStyle">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="FontSize" Value="Medium"></Setter>
+                <Setter Property="Padding" Value="25"></Setter>
+                <Setter Property="BackgroundColor" Value="#096085"></Setter>
+                <Setter Property="TextColor" Value="WhiteSmoke"></Setter>
+                <Setter Property="CornerRadius" Value="15"></Setter>
+            </Style>
+            <Style TargetType="Button" x:Key="AuxButtonStyle">
+                <Setter Property="FontSize" Value="Medium"></Setter>
+                <Setter Property="Padding" Value="10"></Setter>
+                <Setter Property="BackgroundColor" Value="LightGray"></Setter>
+                <Setter Property="TextColor" Value="WhiteSmoke"></Setter>
+                <Setter Property="CornerRadius" Value="15"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout HorizontalOptions="FillAndExpand" Padding="20,20" VerticalOptions="Center">
+                <Frame Padding="0" Margin="0">
+                        <StackLayout BackgroundColor="White" Padding="0" Margin="0">
+                            <Label Text="Creación Producto" Style="{StaticResource Title}"></Label>
+                            <BoxView Style="{StaticResource LineUp}"></BoxView>
+                        </StackLayout>
+                    </Frame>
+                <StackLayout HorizontalOptions="FillAndExpand" Padding="20,20" VerticalOptions="Center">
+                    <Label Text="Nombre:" Style="{StaticResource FormLabel}"/>
+                    <Entry Text="{Binding ProductName}"/>
+                    <Label Text="Descripción:" Style="{StaticResource FormLabel}"/>
+                    <Editor Text="{Binding ProductDescription}" AutoSize="TextChanges"/>
+                    <Label Text="Categoría:" Style="{StaticResource FormLabel}"/>
+                    <Picker x:Name="categoryPicker"
+                                Title="Seleccionar"
+                                TitleColor="Gray"
+                                SelectedIndex="{Binding ProductIndexCategory}"
+                                ItemsSource="{Binding Categories}"
+                                ItemDisplayBinding="{Binding Name}"/>
+                    <Label Text="Cantidad:" Style="{StaticResource FormLabel}"/>
+                    <Entry Keyboard="Numeric" Text="{Binding ProductQuantityAvailable}"/>
+                    <Label Text="Precio:" Style="{StaticResource FormLabel}"/>
+                    <Entry Keyboard="Numeric" Text ="{Binding ProductUnitPrice }"/>
+                    <Label Text="Estado de venta:" Style="{StaticResource FormLabel}"/>
+                    <Picker x:Name="productStatePicker" HorizontalOptions="FillAndExpand"
+                                Title="Seleccionar"
+                                SelectedIndex="{Binding ProductIndexStateProduct}"
+                                TitleColor="Gray"
+                                ItemsSource="{Binding StateProducts}"
+                                ItemDisplayBinding="{Binding Description}"/>
+                    <Label Text="Imagen:" Style="{StaticResource FormLabel}"/>
+                    <Button Text="Agregar" Command="{Binding UploadImageCommand}" 
+                            Style="{StaticResource AuxButtonStyle}"></Button>
+                    <Image Source="{Binding Image}" HorizontalOptions="CenterAndExpand"
+                           Margin="40"></Image>
+                    <Button Text="Crear" Style="{StaticResource ButtonStyle}" Margin="60"
+                                Command="{Binding CreateProductCommand}"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PetShopApp.Views.LoginView"
+             NavigationPage.HasNavigationBar="False">
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem
+            IconImageSource="Shoppingcart.png"
+            Order="Primary"
+            Text="Agregar al carrito"
+            Priority="0"></ToolbarItem>
+    </ContentPage.ToolbarItems> -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--Estilos de la pagina-->
+            <Style TargetType="Label" x:Key="Title">
+                <Setter Property="HorizontalOptions" Value="Center"></Setter>
+                <Setter Property="TextColor" Value="Black"></Setter>
+                <Setter Property="FontSize" Value="30"></Setter>
+                <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+                <Setter Property="Margin" Value="0,08"></Setter>
+                <Setter Property="Padding" Value="90,0"></Setter>
+            </Style>
+            <Style TargetType="Label" x:Key="FormLabel">
+                <Setter Property="Margin" Value="10,40,10,10"></Setter>
+                <Setter Property="FontSize" Value="Medium"></Setter>
+                <Setter Property="TextColor" Value="Black"></Setter>
+            </Style>
+            <Style TargetType="BoxView" x:Key="LineUp">
+                <Setter Property="HeightRequest" Value="3"></Setter>
+                <Setter Property="BackgroundColor" Value="Black"></Setter>
+            </Style>
+            <Style TargetType="Button" x:Key="ButtonStyle">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="FontSize" Value="Medium"></Setter>
+                <Setter Property="Padding" Value="25"></Setter>
+                <Setter Property="BackgroundColor" Value="#096085"></Setter>
+                <Setter Property="TextColor" Value="WhiteSmoke"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <!--<BoxView BackgroundColor="Accent" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand"/>-->
+            <StackLayout VerticalOptions="FillAndExpand">
+                <Frame Padding="0" Margin="0">
+                    <StackLayout BackgroundColor="White" Padding="0" Margin="0">
+
+
+                        <BoxView Style="{StaticResource LineUp}"></BoxView>
+                    </StackLayout>
+                </Frame>
+                <StackLayout HorizontalOptions="FillAndExpand" Padding="40,40" VerticalOptions="Center">
+                    <Label Text="Email:" Style="{StaticResource FormLabel}"/>
+                    <Entry HorizontalOptions="FillAndExpand" Text="{Binding EmailEntry}"/>
+                    <Label Text="Contraseña:" Style="{StaticResource FormLabel}"/>
+                    <Entry HorizontalOptions="FillAndExpand" IsPassword="True" Text="{Binding PasswordEntry}"/>
+                    <!--<Label Text="Tipo de usuario:" Style="{StaticResource FormLabel}"/>-->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                        <RadioButton x:Name="clientCheck" Text="Cliente" IsChecked="{Binding IsClient}" Padding="0,10,10,0"/>
+                        <RadioButton x:Name="vetCheck" Text="Veterinario" IsChecked="{Binding IsVet}" Padding="10,10,0,0"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                        <Button Text="Ingresar" FontSize="Medium"   BackgroundColor="#5EC8EA"  TextColor="White" CornerRadius="100" 
+                                 Style="{StaticResource ButtonStyle}" Margin="5,35,0,15" Command="{Binding ValidateLoginCommand}"/>
+                        <Button Text="Cancelar" FontSize="Medium" Margin="5,35,0,15"  BackgroundColor="#5EC8EA"  TextColor="White" CornerRadius="100"
+                                Style="{StaticResource ButtonStyle}" Command="{Binding CancelLoginCommand}"/>
+                    </StackLayout>
+                    <Label LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" FontSize="Body">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="¿No tienes cuenta? Crea una " TextColor="Black"/>
+                                <Span Text="aquí" x:Name ="labelgotoRegister" TextColor="#096085"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

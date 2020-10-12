@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PetShopApp.Views.RegisterClientView"
+             Title="Registro Cliente">
+    <ContentPage.Content>
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Image Grid.Row="0" Source="ImagenUserRegistro.jpg" Margin="120,0,120,0"/>
+
+            <ScrollView Grid.Row="1" >
+                <StackLayout Padding="30,20">
+                    <Label Text="Registrate" HorizontalOptions="Center" FontSize="20"/>
+                    <Entry Placeholder="Documento" Text="{Binding Usermodel.DocumentId}" PlaceholderColor="#727a82"/>
+                    <Entry Placeholder="Nombre" Text="{Binding Usermodel.Name}" PlaceholderColor="#727a82"/>
+                    <Entry Placeholder="Telefono" Text="{Binding Usermodel.Telephone}" PlaceholderColor="#727a82"/>
+                    <Entry Placeholder="Dirección" Text="{Binding Usermodel.Address}" PlaceholderColor="#727a82"/>
+                    <Entry Placeholder="Correo" Text="{Binding Usermodel.Email}" PlaceholderColor="#727a82"/>
+                    <Entry Placeholder="Contraseña" Text="{Binding Usermodel.Password}" PlaceholderColor="#727a82" IsPassword ="True"/>
+                    <Button Text="Registrarse" Command="{Binding RegistrarUsuarioClientCommand}" BackgroundColor="#086084" CornerRadius="100" TextColor="white" Margin="0,10,0,0"/>
+                </StackLayout>
+
+            </ScrollView>
+            
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
